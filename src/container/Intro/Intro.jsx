@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 import { BsFillPlayFill } from 'react-icons/bs';
-import { meal } from '../../constants';
+import { train } from '../../constants';
 import './Intro.css';
 
 const Intro = () => {
@@ -21,7 +21,7 @@ const Intro = () => {
     <div className="app__video">
       <video
         ref={videoRef}
-        src={meal}
+        src={train}
         type="video/mp4"
         loop
         controls={false}
@@ -30,7 +30,7 @@ const Intro = () => {
         onClick={togglePlayPause}
       />
 
-      <div className="app__video-overlay flex__center" onClick={togglePlayPause}>
+      <div className="app__video-overlay flex__center" onClick={togglePlayPause} id="intro">
         {!isPlaying && (
           <div className="app__video-overlay_circle flex__center">
             <BsFillPlayFill color="#fff" fontSize={30} />

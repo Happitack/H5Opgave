@@ -26,6 +26,15 @@
     background: var(--color-black);
 }
 
+.app__newsletter_errormsg {
+    color: var(--color-red);
+    font-family: var(--font-base);
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .app__newsletter-input button {
     width: max-content;
 }

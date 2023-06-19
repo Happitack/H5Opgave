@@ -52,10 +52,9 @@
     color: var(--color-grey);
   }
 
-  #app__aboutus_pencil
+  #app__aboutus_dots
   {
     color: var(--color-golden);
-    transform: rotate(270deg);
   }
   
   @media screen and (min-width: 2000px) {

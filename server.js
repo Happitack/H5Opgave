@@ -40,3 +40,15 @@ app.post('/subscribe', (req, res) => {
       }
   });
 });
+
+app.get('/textdata', (req, res) => {
+  const request = new sql.Request();
+  request.query("SELECT Title, Subtitle, Description FROM TextData WHERE Page = 'header'", (err, result) => {
+    if (err) {
+      console.error('SQL error', err);
+      res.status(500).send({ error: 'Could not fetch text data' });
+    } else {
+      res.send(result.recordset[0]);
+    }
+  });
+});

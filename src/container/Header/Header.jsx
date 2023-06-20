@@ -15,20 +15,23 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="app__header app__wrapper section_padding" id="home">
-      <div className="app__wrapper_info">
-        <h1 className='app__header-h1'>{textData && textData.Title}</h1>
-        <SubHeading title={textData && textData.Subtitle}/>
-        <p className="p__opensans" style={{margin: '2rem 0'}}>{textData && textData.Description}</p>
-        <a href="#intro">
-          <button type="button" className="custom__button">Watch Trailer</button>
-        </a>
-      </div>
+    <div className="app__bg_anim app__header app__wrapper section_padding" id="home">
+      <div className='app__wrapper_bg'>
+        <div className="app__wrapper_info">
+          <h1 className='app__header-h1'>{textData && textData.Title}</h1>
+          <SubHeading title={textData && textData.Subtitle}/>
+          <p className="p__opensans" style={{margin: '2rem 0'}}>{textData && textData.Description}</p>
+          <a href="#intro">
+            <button type="button" className="custom__button">Watch Trailer</button>
+          </a>
+        </div>
 
-      <div className='app__wrapper_img'>
-        <img src={images.welcome} alt="header img"/>
+        <div className='app__wrapper_img'>
+          <img src={images.welcome} alt="header img"/>
+        </div>
       </div>
     </div>
+    
   );
 };
 

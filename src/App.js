@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { AboutUs, Film2, Footer, Paranoia, Trailer} from './container';
+import { AboutUs, Film2, Footer, Gallery, Paranoia, Trailer} from './container';
 import { Navbar } from './components';
 import './App.css';
 
@@ -11,6 +11,7 @@ const App = () => (
     <Paranoia />
     <Trailer />
     <Film2 />
+    <Gallery />
     <Footer />
   </div>
 );

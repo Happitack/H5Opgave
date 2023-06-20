@@ -19,7 +19,7 @@ const Paranoia = () => {
             <h1 className='app__paranoia-h1'>{data.Title}</h1>
             <SubHeading title={data.Subtitle} />
             <p className="p__opensans" style={{margin: '2rem 0'}}>{data.Description}</p>
-            <a href="#intro">
+            <a href="#trailer">
               <button type="button" className="custom__button">Watch Trailer</button>
             </a>
           </div>

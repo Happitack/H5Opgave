@@ -1,6 +1,6 @@
 import React from 'react';
 import { FiFacebook, FiTwitter, FiInstagram } from 'react-icons/fi';
-import { TfiPencilAlt2 } from 'react-icons/tfi';
+import { TfiLineDotted } from 'react-icons/tfi';
 
 import { FooterOverlay, Newsletter } from '../../components';
 import { images } from '../../constants';
@@ -20,7 +20,7 @@ const Footer = () => (
       <div className="app__footer-links_logo">
         <img src={images.gericht} alt="footer_logo" />
         <p className="p__opensans">&quot;Just give us a budget&quot;</p>
-        <TfiPencilAlt2 id="footer__icon-pencil" size="2em"/>
+        <TfiLineDotted id="footer__icon-pencil" size="2em"/>
         <div className="app__footer-links_icons">
           <FiFacebook />
           <FiTwitter />

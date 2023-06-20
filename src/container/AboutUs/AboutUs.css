@@ -1,71 +1,60 @@
 .app__aboutus {
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
   
   .app__aboutus-overlay {
-    position: absolute;
+    position: relative;
     inset: 0;
-  }
-  
-  .app__aboutus-overlay img {
-    width: 391px;
-    height: 415px;
-    z-index: 0;
   }
   
   .app__aboutus-content {
     width: 100%;
     z-index: 2;
+    display: flex;
   }
   
   .app__aboutus-content_about {
     flex: 1;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
   
     text-align: right;
   }
-  
-  .app__aboutus-content_knife {
-    margin: 2rem 4rem;
+
+  /* Controls the animation of the main logo. 0-100% represents the total time of the animation and what happens each step */
+  @keyframes pulse {
+    0% {
+      filter: opacity(80%);
+    }
+    25% {
+      filter: opacity(75%);
+    }
+    50% {
+      filter: opacity(60%);
+    }
+    75% {
+      filter: opacity(75%);
+    }
+    100% {
+      filter: opacity(80%);
+    }
   }
   
-  .app__aboutus-content_knife img {
+  /* Controls the usage of the above keyframe. Currently set to take the above keyframes and spread them out over 4s */
+  .app__aboutus-overlay img {
     height: 910px;
-  }
-  
-  .app__aboutus-content_history {
-    flex: 1;
-    display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    flex-direction: column;
-  
-    text-align: left;
-  }
-  
-  .app__aboutus-content_about p,
-  .app__aboutus-content_history p {
-    margin: 2rem 0;
-    color: var(--color-grey);
+    z-index: 0;
+    animation: pulse 4s infinite ease-in-out;
   }
 
-  #app__aboutus_pencil
-  {
-    color: var(--color-golden);
-    transform: rotate(270deg);
-  }
   
   @media screen and (min-width: 2000px) {
-    .app__aboutus-content_knife img {
+    .app__aboutus-overlay img {
         height: 1110px;
-    }
-  
-    .app__aboutus-content_about p,
-    .app__aboutus-content_history p {
-        margin: 4rem 0;
     }
   }
   
@@ -82,6 +71,6 @@
   @media screen and (max-width: 650px) {
     .app__aboutus-overlay img {
         width: 80%;
-        height: 320px;
+        height: 80%;
     }
   }

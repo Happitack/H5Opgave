@@ -16,6 +16,14 @@
   background-attachment: fixed;
 }
 
+.app__bg_anim {
+  background: url('./assets/test.gif');
+  background-position: center;
+  background-size: cover;
+  background-repeat: repeat;
+  background-attachment: fixed;
+}
+
 .app__wrapper {
   display: flex;
   justify-content: space-between;

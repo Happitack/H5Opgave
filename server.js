@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // The port that our server will run on (localhost:3001 by default)
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 // Starting the server on our specified port
 app.listen(port, () => console.log(`Server is running on ${port}`));
 

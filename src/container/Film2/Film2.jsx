@@ -6,7 +6,7 @@ import './Film2.css';
 const Film2 = () => {
   const [textData, setTextData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:3001/textdata/film2')
+    fetch('http://localhost:4000/textdata/projectfear')
       .then(response => response.json())
       .then(data => setTextData(data))
       .catch(error => console.error('Error:', error));
@@ -18,11 +18,11 @@ const Film2 = () => {
           <div className='app__film2_wrapper_img'>
             <img src={images.projectfear} alt="header img" />
           </div>
-          <div className="app__wrapper_info">
+          <div className="app__film2_wrapper_info">  {/* changed class here */}
             <h1 className='app__film2-h1'>{data.Title}</h1>
             <SubHeading title={data.Subtitle} />
             <p className="p__opensans" style={{margin: '2rem 0'}}>{data.Description}</p>
-              <button type="button" className="custom__button">Coming Soon</button>
+            <button type="button" className="custom__button">Coming Soon</button>
           </div>
         </div>
       ))}

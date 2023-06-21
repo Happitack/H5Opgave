@@ -50,48 +50,83 @@
 }
 
 @media screen and (min-width: 2000px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+    }
+    
     .app__paranoia-h1 {
         font-size: 180px;
         line-height: 210px;
     }
 
-    .app__wrapper_img img {
-        display: none;
-        flex: none;
+    .app__paranoia_wrapper_img img {
+        flex: block;
     }
 }
 
 @media screen and (max-width: 1150px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
     .app__paranoia-h1 {
         font-size: 90px;
     }
 
-    .app__wrapper_img img {
-        display: none;
-        flex: none;
+    .app__paranoia_wrapper_img img {
+        flex: blocl;
     }
 }
 
 @media screen and (max-width: 650px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
     .app__paranoia-h1 {
         font-size: 70px;
         line-height: 87px;
     }
-
-    .app__wrapper_img img {
-        display: none;
-        flex: none;
+    .app__paranoia_wrapper_img img {
+        flex: block;
     }
 }
 
 @media screen and (max-width: 450px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
     .app__paranoia-h1 {
         font-size: 50px;
         line-height: 70px;
     }
 
-    .app__wrapper_img img {
-        display: none;
-        flex: none;
+    .app__paranoia_wrapper_info {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        text-align: center; 
+    }
+
+    .app__paranoia_wrapper_img
+    {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10%; 
+    }
+
+    .app__paranoia_wrapper_img img {
+        flex: block;
     }
 }

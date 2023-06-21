@@ -1,9 +1,9 @@
 -- Create Database
-CREATE DATABASE NewsletterDB;
+CREATE DATABASE TwinMindsDB;
 GO
 
 -- Use Created Database
-USE NewsletterDB;
+USE TwinMindsDB;
 GO
 
 -- Create Subscribers table

@@ -24,6 +24,7 @@ if ($nodeVersion -eq "v16.20.1") {
 
     } else {
         Write-Host "Node v16.20.1 is required for setup. Please install the correct version."
+		pause
         exit
     }
 }

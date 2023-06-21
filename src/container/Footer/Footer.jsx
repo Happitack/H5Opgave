@@ -23,6 +23,7 @@ const Footer = () => (
         <TfiLineDotted id="footer__icon-pencil" size="2em"/>
         <div className="app__footer-links_icons">
           <FiFacebook />
+          <FiFacebook />
           <FiTwitter />
           <FiInstagram />
         </div>

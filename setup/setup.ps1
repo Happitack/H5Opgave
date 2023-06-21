@@ -1,52 +1,56 @@
-# Checking Node Version
-$nodeVersion = & node --version
+# Start logging to setup.log
+Start-Transcript -Path ".\setup.log" -Append
 
-if ($nodeVersion -eq "v16.20.1") {
-    Write-Host "Correct version of Node detected."
-} else {
-    Write-Host "Node is not installed or incorrect version detected."
-    $readInput = Read-Host -Prompt "Do you want to uninstall the current version and install the correct one (y/n)?"
-    
-    if ($readInput -eq 'y') {
-        # Uninstall Node.js - make sure Node.js is installed in the default location
-        Start-Process -FilePath "msiexec.exe" -ArgumentList "/x C:\Program Files\nodejs\node.msi /quiet" -Wait
+try {
+    # Checking Node Version
+    $nodeVersion = & node --version
 
-        # Choose Node.js version (x64 or x86)
-        $readInputNodeVersion = Read-Host -Prompt "Which version do you want to install (x64 or x86)?"
-        $nodeURL = "https://nodejs.org/download/release/v16.20.1/node-v16.20.1-$($readInputNodeVersion).msi"
-
-        # Download Node.js
-        $nodeInstallerPath = "$env:TEMP\node-v16.20.1-$($readInputNodeVersion).msi"
-        Invoke-WebRequest -Uri $nodeURL -OutFile $nodeInstallerPath
-
-        # Install Node.js
-        Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $nodeInstallerPath /quiet" -Wait
-
+    if ($nodeVersion -eq "v16.20.1") {
+        Write-Host "Correct version of Node detected."
     } else {
-        Write-Host "Node v16.20.1 is required for setup. Please install the correct version."
-		pause
+        Write-Host "Node is not installed or incorrect version detected."
+        $readInput = Read-Host -Prompt "Do you want to uninstall the current version and install the correct one (y/n)?"
+        
+        if ($readInput -eq 'y') {
+            # Uninstall Node.js - make sure Node.js is installed in the default location
+            Start-Process -FilePath "msiexec.exe" -ArgumentList "/x C:\Program Files\nodejs\node.msi /quiet" -Wait
+
+            # Choose Node.js version (x64 or x86)
+            $readInputNodeVersion = Read-Host -Prompt "Which version do you want to install (x64 or x86)?"
+            $nodeURL = "https://nodejs.org/download/release/v16.20.1/node-v16.20.1-$($readInputNodeVersion).msi"
+
+            # Download Node.js
+            $nodeInstallerPath = "$env:TEMP\node-v16.20.1-$($readInputNodeVersion).msi"
+            Invoke-WebRequest -Uri $nodeURL -OutFile $nodeInstallerPath
+
+            # Install Node.js
+            Start-Process -FilePath "msiexec.exe" -ArgumentList "/i $nodeInstallerPath /quiet" -Wait
+
+        } else {
+            Write-Host "Node v16.20.1 is required for setup. Please install the correct version."
+            pause
+            exit
+        }
+    }
+
+    # Check MSSQL Server TCP/IP status
+    Write-Host "Now we will check if your SQL Server is configured to allow TCP/IP connections."
+    Write-Host "Attempting to connect to SQL Server..."
+    try {
+        # Run sqlcmd utility to connect to the server. This will throw an exception if unable to connect.
+        $null = sqlcmd -S "localhost" -U "sa" -P "password" -Q "SELECT 1"
+        Write-Host "Successfully connected to SQL Server."
+    } catch {
+        Write-Host "Failed to connect to SQL Server. Please make sure TCP/IP is enabled in SQL Server Configuration Manager, and the SQL Server service is running."
+        Write-Host "You can enable TCP/IP following these steps:"
+        Write-Host "1. Open SQL Server Configuration Manager."
+        Write-Host "2. Expand SQL Server Network Configuration and select Protocols for your SQL instance."
+        Write-Host "3. In the right panel, right-click on TCP/IP and select Enable."
+        Write-Host "4. Restart your SQL Server instance for the changes to take effect."
+        Write-Host "After doing this, please run the script again."
+        Pause
         exit
     }
-}
-
-# Check MSSQL Server TCP/IP status
-Write-Host "Now we will check if your SQL Server is configured to allow TCP/IP connections."
-Write-Host "Attempting to connect to SQL Server..."
-try {
-    # Run sqlcmd utility to connect to the server. This will throw an exception if unable to connect.
-    $null = sqlcmd -S "localhost" -U "sa" -P "password" -Q "SELECT 1"
-    Write-Host "Successfully connected to SQL Server."
-} catch {
-    Write-Host "Failed to connect to SQL Server. Please make sure TCP/IP is enabled in SQL Server Configuration Manager, and the SQL Server service is running."
-    Write-Host "You can enable TCP/IP following these steps:"
-    Write-Host "1. Open SQL Server Configuration Manager."
-    Write-Host "2. Expand SQL Server Network Configuration and select Protocols for your SQL instance."
-    Write-Host "3. In the right panel, right-click on TCP/IP and select Enable."
-    Write-Host "4. Restart your SQL Server instance for the changes to take effect."
-    Write-Host "After doing this, please run the script again."
-    Pause
-    exit
-}
 
 
 # Setting up Database - Make sure SQL Server PowerShell module is installed
@@ -144,3 +148,13 @@ Write-Host "Installing npm packages... This might take a few minutes."
 npm install express mssql body-parser cors
 
 Write-Host "Setup complete."
+
+} catch {
+    Write-Host "An error occurred:"
+    Write-Host $_.Exception.Message
+} finally {
+    # Stop logging
+    Stop-Transcript
+    # Pause to let the user see the output
+    pause
+}

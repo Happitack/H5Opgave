@@ -21,7 +21,7 @@ const Film2 = () => {
           <div className="app__film2_wrapper_info">  {/* changed class here */}
             <h1 className='app__film2-h1'>{data.Title}</h1>
             <SubHeading title={data.Subtitle} />
-            <p className="p__opensans" style={{margin: '2rem 0'}}>{data.Description}</p>
+            <p className="p__opensans_films" style={{margin: '2rem 0'}}>{data.Description}</p>
             <button type="button" className="custom__button">Coming Soon</button>
           </div>
         </div>

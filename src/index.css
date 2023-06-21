@@ -7,7 +7,7 @@
   
   --color-golden: #DCCA87;
   --color-black: #0C0C0C;
-  --color-black-tran: #0c0c0cef;
+  --color-black-tran: #0c0c0c9c;
   --color-gray: #545454;
   --color-crimson: #F5EFDB;
   --color-grey: #AAAAAA;
@@ -34,22 +34,22 @@ a {
 
 @-webkit-keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }
 
 @keyframes slide-bottom {
   0% {
-    -webkit-transform: translateY(-25%);
-            transform: translateY(-25%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
   }
   100% {
-    -webkit-transform: translateY(0);
-            transform: translateY(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
 }

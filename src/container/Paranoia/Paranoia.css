@@ -1,0 +1,132 @@
+.app_.paranoia {
+    background-color: var(--color-black);
+}
+
+.app__paranoia_wrapper_info {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+.app__paranoia_wrapper_img {
+    flex: 1;
+    display: flex;
+    justify-content: right;
+    align-items: right;
+}
+
+.app__paranoia_wrapper_img img {
+    width: 80%;
+  }
+
+.app__paranoia_title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.app__paranoia-h1 {
+    font-family: var(--font-base);
+    color: var(--color-white);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: capitalize;
+    line-height: 117px;
+    font-size: 90px;
+}
+
+.app__wrapper_paranoia_bg {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-black-tran);
+    padding: 2em;
+}
+
+.app__paranoia-img img {
+    width: 100%;
+}
+
+@media screen and (min-width: 2000px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+    }
+    
+    .app__paranoia-h1 {
+        font-size: 180px;
+        line-height: 210px;
+    }
+
+    .app__paranoia_wrapper_img img {
+        flex: block;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .app__paranoia-h1 {
+        font-size: 90px;
+    }
+
+    .app__paranoia_wrapper_img img {
+        flex: blocl;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .app__paranoia-h1 {
+        font-size: 70px;
+        line-height: 87px;
+    }
+    .app__paranoia_wrapper_img img {
+        flex: block;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .app__wrapper_paranoia_bg {
+        flex-direction: column;
+        align-items: center;
+        align-content: center;
+    }
+    
+    .app__paranoia-h1 {
+        font-size: 50px;
+        line-height: 70px;
+    }
+
+    .app__paranoia_wrapper_info {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-direction: column;
+        text-align: center; 
+    }
+
+    .app__paranoia_wrapper_img
+    {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10%; 
+    }
+
+    .app__paranoia_wrapper_img img {
+        flex: block;
+    }
+}

@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // The port that our server will run on (localhost:3001 by default)
-const port = process.env.PORT || 3001;
+const port = process.env.PORT || 4000;
 // Starting the server on our specified port
 app.listen(port, () => console.log(`Server is running on ${port}`));
 
@@ -49,14 +49,16 @@ app.post('/subscribe', (req, res) => {
 });
 
 // Defines a route for a GET request to /textdata. This is where the client will fetch the text data for the header.
-app.get('/textdata', (req, res) => {
+app.get('/textdata/:page', (req, res) => {
+  const page = req.params.page;
   const request = new sql.Request();
-  request.query("SELECT Title, Subtitle, Description FROM TextData WHERE Page = 'header'", (err, result) => {
+  request.input('page', sql.NVarChar(50), page);
+  request.query("SELECT Title, Subtitle, Description FROM TextData WHERE Page = @page", (err, result) => {
     if (err) {
       console.error('SQL error', err);
       res.status(500).send({ error: 'Could not fetch text data' });
     } else {
-      res.send(result.recordset[0]);
+      res.send(result.recordset);
     }
   });
 });

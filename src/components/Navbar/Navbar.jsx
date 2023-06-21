@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className={`app__navbar ${isScrolled ? 'scrolled' : ''}`}>
       <div className="app__navbar-logo">
-      <a href="#home"><img src={images.gericht} alt="app__logo" /></a>
+      <a href="#about"><img src={images.gericht} alt="app__logo" /></a>
       </div>
 
       <div className="app__navbar-smallscreen">
@@ -39,8 +39,9 @@ const Navbar = () => {
             <AiOutlineClose className="app__navbar-smallscreen__icon overlay__close" color="#fff" fontSize={27} onClick={() => setToggleMenu(false)} />
             <ul className="app__navbar-smallscreen_links">
               <li><a href="#about" onClick={() => setToggleMenu(false)}>Home</a></li>
-              <li><a href="#home" onClick={() => setToggleMenu(false)}>Paranoia</a></li>
-              <li><a href="#intro" onClick={() => setToggleMenu(false)}>Trailer</a></li>
+              <li><a href="#paranoia" onClick={() => setToggleMenu(false)}>Paranoia</a></li>
+              <li><a href="#trailer" onClick={() => setToggleMenu(false)}>Trailer</a></li>
+              <li><a href="#projectfear" onClick={() => setToggleMenu(false)}>Project Fear</a></li>
               <li><a href="#newsletter" onClick={() => setToggleMenu(false)}>Contact</a></li>
             </ul>
           </div>

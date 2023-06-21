@@ -1,17 +1,15 @@
 import AboutUs from './AboutUs/AboutUs';
-import Chef from './Chef/Chef';
+import Film2 from './Film2/Film2';
 import Footer from './Footer/Footer';
 import Gallery from './Gallery/Gallery';
-import Header from './Header/Header';
-import Intro from './Intro/Intro';
-import Laurels from './Laurels/Laurels';
+import Paranoia from './Paranoia/Paranoia';
+import Trailer from './trailer/trailer';
 
 export {
   AboutUs,
-  Chef,
+  Film2,
   Footer,
   Gallery,
-  Header,
-  Intro,
-  Laurels,
+  Paranoia,
+  Trailer,
 };

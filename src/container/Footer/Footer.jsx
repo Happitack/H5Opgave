@@ -22,9 +22,9 @@ const Footer = () => (
         <p className="p__opensans">&quot;Just give us a budget&quot;</p>
         <TfiLineDotted id="footer__icon-pencil" size="2em"/>
         <div className="app__footer-links_icons">
-          <a href='https://www.facebook.com' target="_blank"><FiFacebook /></a>
-          <a href='https://www.twitter.com' target="_blank"><FiTwitter /></a>
-          <a href='https://www.instagram.com' target="_blank"><FiInstagram /></a> 
+          <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer" ><FiFacebook /></a>
+          <a href='https://www.twitter.com' target="_blank" rel="noopener noreferrer"><FiTwitter /></a>
+          <a href='https://www.instagram.com' target="_blank" rel="noopener noreferrer"><FiInstagram /></a> 
         </div>
       </div>
 

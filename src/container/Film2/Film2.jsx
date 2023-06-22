@@ -6,7 +6,7 @@ import './Film2.css';
 const Film2 = () => {
   const [textData, setTextData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:4000/textdata/projectfear')
+    fetch('http://localhost:3001/textdata/projectfear')
       .then(response => response.json())
       .then(data => setTextData(data))
       .catch(error => console.error('Error:', error));

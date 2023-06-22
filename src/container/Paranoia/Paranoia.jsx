@@ -6,7 +6,7 @@ import './Paranoia.css';
 const Paranoia = () => {
   const [textData, setTextData] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:4000/textdata/paranoia')
+    fetch('http://localhost:3001/textdata/paranoia')
       .then(response => response.json())
       .then(data => setTextData(data))
       .catch(error => console.error('Error:', error));

@@ -5,26 +5,32 @@ import './Newsletter.css';
 const Newsletter = () => {
   const [email, setEmail] = useState('');
   const [error, setError] = useState('');
+  const [success, setSuccess] = useState('');
 
   const handleSubscription = async () => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
+  
     if (!emailRegex.test(email)) {
       setError('Please enter a valid email address.');
       return;
     }
-
+  
     // No error, so make the POST request.
     setError('');
-
+    setSuccess(''); // Clear any old success message
+  
     const response = await fetch('http://localhost:3001/subscribe', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email }),
     });
-
+  
+    const data = await response.json();
+  
     if (!response.ok) {
-      setError('Could not subscribe. Please try again.');
+      setError(data.error || 'Could not subscribe. Please try again.');
+    } else {
+      setSuccess(data.message);
     }
   };
 
@@ -47,6 +53,7 @@ const Newsletter = () => {
         </button>
       </div>
         {error && <div className="app__newsletter_errormsg">{error}</div>}
+        {success && <div className="app__newsletter_successmsg">{success}</div>}
     </div>
   );
 };

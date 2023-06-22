@@ -76,11 +76,11 @@ GO
 IF NOT EXISTS (
     SELECT * 
     FROM sys.tables
-    WHERE name='Subscribers' AND type = 'U'
+    WHERE name='Newsletter' AND type = 'U'
 )
 BEGIN
-    -- Create Subscribers table
-    CREATE TABLE Subscribers(
+    -- Create Newsletter table
+    CREATE TABLE Newsletter(
         ID INT PRIMARY KEY IDENTITY(1,1), -- Auto-incrementing ID
         Email NVARCHAR(320) NOT NULL, -- NVARCHAR type allows for Unicode characters. 320 is the maximum length of an email address.
         SubscriptionDate DATETIME DEFAULT GETDATE() -- Gets the date of subscription automatically.

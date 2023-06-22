@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 // The port that our server will run on (localhost:3001 by default)
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 // Starting the server on our specified port
 app.listen(port, () => console.log(`Server is running on ${port}`));
 
@@ -38,13 +38,25 @@ app.post('/subscribe', (req, res) => {
 
   const request = new sql.Request();
   request.input('email', sql.NVarChar(320), email);
-  request.query(`INSERT INTO Newsletter (Email, SubscriptionDate) VALUES (@email, GETDATE())`, (err, result) => {
-      if (err) {
-          console.error('SQL error', err);
-          res.status(500).send({ error: 'Could not subscribe email' });
-      } else {
-          res.send({ message: 'Email subscribed successfully!' });
-      }
+  
+  // First, check if email is already in the database
+  request.query(`SELECT * FROM Newsletter WHERE Email = @email`, (err, result) => {
+    if (err) {
+      console.error('SQL error', err);
+      res.status(500).send({ error: 'Could not process request' });
+    } else if (result.recordset.length > 0) {
+      res.status(400).send({ error: 'Email is already subscribed' });
+    } else {
+      // Email is not in the database, so insert it
+      request.query(`INSERT INTO Newsletter (Email, SubscriptionDate) VALUES (@email, GETDATE())`, (err, result) => {
+        if (err) {
+            console.error('SQL error', err);
+            res.status(500).send({ error: 'Could not subscribe email' });
+        } else {
+            res.send({ message: 'Email subscribed successfully!' });
+        }
+      });
+    }
   });
 });
 
